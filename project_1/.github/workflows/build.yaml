@@ -1,8 +1,6 @@
 name: Echo Secret
 
-on:
-  pull_request:
-    types: [ opened,synchronize ]
+on: [pull_request, push]
 jobs:
   echo-secret:
     runs-on: ubuntu-latest
