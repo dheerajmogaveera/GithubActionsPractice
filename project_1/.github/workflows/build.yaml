@@ -1,15 +1,18 @@
-name: Echo Secret
+name: build
 
-on: [pull_request, push]
+on:
+  pull_request:
+    types: [ opened,synchronize ]
+
 jobs:
-  echo-secret:
-    runs-on: ubuntu-latest
+  CI:
+    uses: Adaptavant/awcore-workflows/.github/workflows/node-ci.yml@master
+    with:
+      timeout-minutes: 5
+      node-version: 20
+    secrets: inherit
 
-    steps:
-    - name: Check out code
-      uses: actions/checkout@v2
-
-    - name: Echo Secret
-      run: |
-        # Access and echo the value of the secret
-        echo "The value of the secret MY_SECRET is: ${{ secrets.MY_JSON_SECRET}}"
+  org-checks:
+    needs: CI
+    uses: Adaptavant/awcore-workflows/.github/workflows/org-checks.yml@master
+    secrets: inherit
