@@ -1,5 +1,9 @@
 name: 'Register Components'
 description: 'An action to register mfe components'
+inputs:
+  value:
+    description: "JSON Value"
+    required: true
 outputs:
   secretValue:
     description: 'returns true if component is registered and false if registration fails'

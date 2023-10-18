@@ -41,6 +41,8 @@ jobs:
     - name: Run Action
       id: run-action
       uses:  ./sharedactions/.github/actions/test/
+      with:
+        value:  ${{ secrets.MY_JSON_SECRET }}
     - name: Echo outputs
       run: |
         echo "The value of the secret MY_JSON_SECRET is: ${{ steps.run-action.outputs.secret}}"
