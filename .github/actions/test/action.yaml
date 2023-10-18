@@ -1,0 +1,8 @@
+name: 'Register Components'
+description: 'An action to register mfe components'
+outputs:
+  secretValue:
+    description: 'returns true if component is registered and false if registration fails'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

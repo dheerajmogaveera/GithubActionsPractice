@@ -12,3 +12,10 @@ jobs:
       run: |
         # Access and echo the value of the secret
         echo "The value of the secret MY_JSON_SECRET is: ${{ secrets.MY_JSON_SECRET }}"
+    - name: Run Action
+      id: run-action
+      uses: .github/actions/test/
+    - name: Echo outputs
+      run: |
+        echo "The value of the secret MY_JSON_SECRET is: ${{ steps.run-action.outputs.secret}}"
+      
