@@ -7,6 +7,26 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v2
+    - name: Checkout workflows repo # required so we can reference the actions locally
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ env.ACTIONS_REF }}
+        path: sharedactions
+        sparse-checkout: |
+          .github/actions/test/
+    
+    - name: Install Node Dependencies
+      run: |
+        echo "::group::Install Node Dependencies"
+        if [ "${{ env.PACKAGE_MANAGER }}" == "pnpm" ]; then
+          pnpm install --frozen-lockfile
+        else
+          npm ci
+        fi
+        echo "::endgroup::"
+      shell: bash
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
 
     - name: Echo Secret
       run: |
@@ -14,7 +34,7 @@ jobs:
         echo "The value of the secret MY_JSON_SECRET is: ${{ secrets.MY_JSON_SECRET }}"
     - name: Run Action
       id: run-action
-      uses: .github/actions/test/
+      uses:  ./sharedactions/.github/actions/test/
     - name: Echo outputs
       run: |
         echo "The value of the secret MY_JSON_SECRET is: ${{ steps.run-action.outputs.secret}}"
