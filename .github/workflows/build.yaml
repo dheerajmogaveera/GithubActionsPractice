@@ -6,9 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ${{ inputs.working-directory || github.event.inputs.working-directory }}
+        working-directory: './'
     env:
-      ACTIONS_REF: ${{ inputs.actions-ref || github.event.inputs.actions-ref }}
+      ACTIONS_REF: 'master'
     steps:
     - name: Check out code
       uses: actions/checkout@v2
