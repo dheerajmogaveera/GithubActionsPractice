@@ -4,8 +4,6 @@ jobs:
   node-ci:
     name: Node CI
     runs-on: ubuntu-latest
-    environment: ${{ github.event.inputs.environment || inputs.environment }}
-    timeout-minutes: ${{ inputs.timeout-minutes || github.event.inputs.timeout-minutes }}
     defaults:
       run:
         working-directory: ${{ inputs.working-directory || github.event.inputs.working-directory }}
