@@ -18,7 +18,6 @@ jobs:
         ref: ${{ env.ACTIONS_REF }}
         path: sharedactions
         repository: dheerajmogaveera/GithubActionsPractice
-        token: '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'
         sparse-checkout: |
           .github/actions/test/
     
