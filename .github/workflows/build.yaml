@@ -8,7 +8,7 @@ jobs:
       run:
         working-directory: './'
     env:
-      ACTIONS_REF: 'master'
+      ACTIONS_REF: '@test'
     steps:
     - name: Check out code
       uses: actions/checkout@v2
