@@ -9,6 +9,7 @@ jobs:
         working-directory: './'
     env:
       ACTIONS_REF: ${{ github.base_ref }}
+      MY_JSON_SECRET: ${{ secrets.MY_JSON_SECRET }}
     steps:
     - name: Check out code
       uses: actions/checkout@v3
@@ -43,6 +44,4 @@ jobs:
     - name: Echo outputs
       run: |
         echo "The value of the secret MY_JSON_SECRET is: ${{ steps.run-action.outputs.secret}}"
-      env:
-         MY_JSON_SECRET: ${{ secrets.MY_JSON_SECRET }}
       
