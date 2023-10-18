@@ -20,7 +20,12 @@ jobs:
         repository: dheerajmogaveera/GithubActionsPractice
         sparse-checkout: |
           .github/actions/test/
-    
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+       node-version: 14
+      env:
+        MY_JSON_SECRET: ${{ secrets.MY_JSON_SECRET }}
     - name: Install Node Dependencies
       run: |
         echo "::group::Install Node Dependencies"
