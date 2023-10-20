@@ -9,7 +9,7 @@ jobs:
         working-directory: './'
     env:
       ACTIONS_REF: ${{ github.base_ref }}
-      MY_JSON_SECRET: ${{ secrets.test }}
+      MY_JSON_SECRET: ${{ secrets.MY_JSON_SECRET}}
     steps:
     - name: Check out code
       uses: actions/checkout@v3
