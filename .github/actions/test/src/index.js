@@ -1,12 +1,7 @@
 const core = require('@actions/core');
-
+import test from '../../../../helper/helper';
 async function run() {
-    const secret = process.env.MY_JSON_SECRET;
-    let bufferObj = Buffer.from(secret, "base64");
-    let decodedString = bufferObj.toString("utf8");
-    console.log("env secret:", decodedString);
-    const json = JSON.parse(decodedString);
-    console.log("json:", json);
+    const json = test();
     core.setOutput('secret', json);
 }
 
