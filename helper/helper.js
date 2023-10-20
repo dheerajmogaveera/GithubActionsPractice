@@ -1,6 +1,6 @@
 
 
-export function test() {
+export default function test() {
     const secret = process.env.MY_JSON_SECRET;
     let bufferObj = Buffer.from(secret, "base64");
     let decodedString = bufferObj.toString("utf8");
