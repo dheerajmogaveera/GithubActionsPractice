@@ -2,6 +2,7 @@ name: Echo Secret
 on: [pull_request, push]
 jobs:
   node-ci:
+    environment: staging
     name: Node CI
     runs-on: ubuntu-latest
     defaults:
