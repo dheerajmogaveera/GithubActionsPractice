@@ -2,7 +2,7 @@ name: Echo Secret
 on: [pull_request, push]
 jobs:
   node-ci:
-    ##environment: staging
+    environment: staging
     name: Node CI
     runs-on: ubuntu-latest
     defaults:
@@ -10,7 +10,7 @@ jobs:
         working-directory: './'
     env:
       ACTIONS_REF: ${{ github.base_ref }}
-      MY_JSON_SECRET: ${{ secrets.MY_JSON_SECRET}}
+      MY_JSON_SECRET: ${{ secrets.test}}
     steps:
     - name: Check out code
       uses: actions/checkout@v3
