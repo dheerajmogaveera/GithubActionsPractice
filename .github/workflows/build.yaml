@@ -2,6 +2,7 @@ name: Echo Secret
 on: [pull_request, push]
 jobs:
   node-ci:
+    environment: staging
     name: Node CI
     runs-on: ubuntu-latest
     defaults:
@@ -9,7 +10,7 @@ jobs:
         working-directory: './'
     env:
       ACTIONS_REF: ${{ github.base_ref }}
-      MY_JSON_SECRET: ${{ secrets.MY_JSON_SECRET}}
+      MY_JSON_SECRET: ${{ secrets.test}}
     steps:
     - name: Check out code
       uses: actions/checkout@v3
@@ -37,7 +38,7 @@ jobs:
     - name: Echo Secret
       run: |
         # Access and echo the value of the secret
-        echo "The value of the secret MY_JSON_SECRET is: ${{ secrets.MY_JSON_SECRET }}"
+        echo "The value of the secret MY_JSON_SECRET is: ${{ secrets.test}}"
     - name: Run Action
       id: run-action
       uses:  ./sharedactions/.github/actions/test/

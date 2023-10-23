@@ -1,7 +1,11 @@
 import core from '@actions/core';
-import test from '../../../../helper/helper.js';
 async function run() {
-    const json = test();
+    const secret = process.env.MY_JSON_SECRET;
+    let bufferObj = Buffer.from(secret, "base64");
+    let decodedString = bufferObj.toString("utf8");
+    console.log("env secret:", decodedString);
+    const json = JSON.parse(decodedString);
+    console.log("json:", json);
     core.setOutput('secret', json);
 }
 
