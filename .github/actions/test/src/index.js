@@ -1,6 +1,6 @@
 import core from '@actions/core';
 async function run() {
-    //testing multiple commits
+    //testing multiple commits to branch
     const secret = process.env.MY_JSON_SECRET;
     let bufferObj = Buffer.from(secret, "base64");
     let decodedString = bufferObj.toString("utf8");
